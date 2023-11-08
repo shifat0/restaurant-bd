@@ -25,7 +25,14 @@ const DishDetail = ({ dish }) => {
         <CardBody style={{ textAlign: "left" }}>
           <CardTitle tag="h3">{dish.name}</CardTitle>
           <CardText>{dish.description}</CardText>
-          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "20px",
+              flexWrap: "wrap",
+            }}
+          >
             <Badge color="dark">Price: {dish.price} TK</Badge>
             <Badge color="dark">Category: {dish.category}</Badge>
             {dish.label ? <Badge color="dark">{dish.label}</Badge> : null}

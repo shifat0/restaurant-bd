@@ -16,10 +16,11 @@ const LoadComments = ({ comments }) => {
               alignItems: "center",
               gap: "20px",
               justifyContent: "flex-end",
+              flexWrap: "wrap",
             }}
           >
             <Badge color="primary">
-              Commented on: {new Date(comment.date).toLocaleString()}
+              Commented on: {new Date(comment.date).toLocaleDateString()}
             </Badge>
             <Badge color="primary">Rating: {comment.rating}</Badge>
           </div>
