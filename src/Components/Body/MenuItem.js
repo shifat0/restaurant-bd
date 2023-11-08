@@ -6,7 +6,12 @@ const MenuItem = ({ dish, handleSelectedDish }) => {
     <>
       <Card
         inverse
-        style={{ margin: "10px", padding: "10px", cursor: "pointer" }}
+        style={{
+          margin: "10px",
+          padding: "10px",
+          cursor: "pointer",
+          width: "500px",
+        }}
         onClick={() => handleSelectedDish(dish)}
       >
         <CardImg

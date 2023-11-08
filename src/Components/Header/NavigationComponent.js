@@ -17,7 +17,7 @@ const NavigationComponent = () => {
         <NavbarBrand href="/">Restaurent BD</NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="me-auto" navbar>
             <NavItem>
               <Link to="/" className="nav-link">
                 Home

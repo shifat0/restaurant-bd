@@ -1,34 +1,61 @@
-import React, { useState } from "react";
+import { Component } from "react";
 import MenuItem from "./MenuItem";
 import DISHES from "../../data/dishes";
 import DishDetail from "./DishDetail";
+import { Button, CardColumns, Modal, ModalFooter } from "reactstrap";
 
-const Menu = () => {
-  const [dishes] = useState(DISHES);
-  const [selectedDish, setSelectedDish] = useState(null);
-
-  const handleSelectedDish = (dish) => {
-    setSelectedDish(dish);
+class Menu extends Component {
+  state = {
+    dishes: DISHES,
+    selectedDish: null,
+    modalOpen: false,
   };
 
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col-5">
-          {dishes.map((dish) => (
-            <MenuItem
-              key={dish.id}
-              dish={dish}
-              handleSelectedDish={handleSelectedDish}
-            />
-          ))}
-        </div>
-        <div className="col-7">
-          {selectedDish ? <DishDetail dish={selectedDish} /> : ""}
+  handleSelectedDish = (dish) => {
+    this.setState({ selectedDish: dish });
+    this.setState({ modalOpen: true });
+  };
+
+  render() {
+    return (
+      <div className="container">
+        <div className="row">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
+              flexWrap: "wrap",
+            }}
+          >
+            {this.state.dishes.map((dish) => (
+              <MenuItem
+                key={dish.id}
+                dish={dish}
+                handleSelectedDish={this.handleSelectedDish}
+              />
+            ))}
+          </div>
+          <Modal isOpen={this.state.modalOpen}>
+            {this.state.selectedDish ? (
+              <DishDetail dish={this.state.selectedDish} />
+            ) : (
+              ""
+            )}
+            <ModalFooter>
+              <Button
+                color="danger"
+                onClick={() => this.setState({ modalOpen: false })}
+              >
+                Close
+              </Button>
+            </ModalFooter>
+          </Modal>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Menu;
