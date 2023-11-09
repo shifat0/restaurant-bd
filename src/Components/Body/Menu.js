@@ -11,6 +11,22 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addComment: (dishId, author, rating, comment, date) =>
+      dispatch({
+        type: "ADD_COMMENT",
+        payload: {
+          dishId: dishId,
+          author: author,
+          rating: rating,
+          comment: comment,
+          date: date,
+        },
+      }),
+  };
+};
+
 class Menu extends Component {
   state = {
     selectedDish: null,
@@ -50,6 +66,7 @@ class Menu extends Component {
                 comments={this.props.comments.filter(
                   (comment) => comment.dishId === this.state.selectedDish.id
                 )}
+                addComment={this.props.addComment}
               />
             )}
             <ModalFooter>
@@ -67,4 +84,4 @@ class Menu extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

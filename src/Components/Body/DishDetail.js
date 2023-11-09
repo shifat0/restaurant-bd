@@ -10,7 +10,7 @@ import {
 import LoadComments from "./LoadComments";
 import CommentForm from "./CommentForm";
 
-const DishDetail = ({ dish, comments }) => {
+const DishDetail = ({ dish, comments, addComment }) => {
   return (
     <>
       <Card className="my-2">
@@ -41,7 +41,7 @@ const DishDetail = ({ dish, comments }) => {
           <hr />
           <LoadComments comments={comments} />
           <hr />
-          <CommentForm dishId={dish.id} />
+          <CommentForm dishId={dish.id} addComment={addComment} />
         </CardBody>
       </Card>
     </>
