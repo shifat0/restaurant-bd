@@ -5,7 +5,6 @@ import { Button, Modal, ModalFooter } from "reactstrap";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     dishes: state.dishes,
     comments: state.comments,
