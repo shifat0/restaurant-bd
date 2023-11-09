@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import LoadComments from "./LoadComments";
 
-const DishDetail = ({ dish }) => {
+const DishDetail = ({ dish, comments }) => {
   return (
     <>
       <Card className="my-2">
@@ -38,7 +38,7 @@ const DishDetail = ({ dish }) => {
             {dish.label ? <Badge color="dark">{dish.label}</Badge> : null}
           </div>
           <hr />
-          <LoadComments comments={dish.comments} />
+          <LoadComments comments={comments} />
         </CardBody>
       </Card>
     </>
